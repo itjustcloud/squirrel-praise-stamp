@@ -1,0 +1,10 @@
+{
+  "rules": {
+    "apps": {
+      "squirrel-praise-stamp": {
+        ".read": true,
+        ".write": true
+      }
+    }
+  }
+}
