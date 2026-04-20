@@ -32,7 +32,6 @@ export default function App() {
   const [state, setState] = useState(DEFAULT_STATE);
   const [selectedBoardId, setSelectedBoardId] = useState(DEFAULT_BOARDS[0].id);
   const [memoInput, setMemoInput] = useState('');
-  const [newBoardName, setNewBoardName] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const [isAdminUnlocked, setIsAdminUnlocked] = useState(() => sessionStorage.getItem(SESSION_KEY) === 'true');
   const [adminError, setAdminError] = useState('');
@@ -75,32 +74,6 @@ export default function App() {
       return;
     }
     setAdminError('비밀번호가 맞지 않습니다.');
-  };
-
-  const addBoard = async () => {
-    const name = newBoardName.trim();
-    if (!name) return;
-
-    const board = {
-      id: `board-${Date.now()}`,
-      name,
-      goal: 10,
-      stamps: 0,
-      history: [],
-    };
-
-    await runTransaction(ref(db, STATE_PATH), (current) => {
-      const base = current || DEFAULT_STATE;
-      const boards = Array.isArray(base.boards) ? base.boards : DEFAULT_BOARDS;
-      return {
-        ...base,
-        boards: [...boards, board],
-        updatedAt: new Date().toISOString(),
-      };
-    });
-
-    setSelectedBoardId(board.id);
-    setNewBoardName('');
   };
 
   const updateGoal = async (goal) => {
@@ -168,20 +141,7 @@ export default function App() {
       </header>
 
       <section className="mt-4 rounded-2xl border border-acorn-200 bg-white/80 p-4">
-        <h2 className="text-sm font-bold">도장 종류 등록</h2>
-        <div className="mt-2 flex gap-2">
-          <input
-            value={newBoardName}
-            onChange={(e) => setNewBoardName(e.target.value)}
-            onKeyDown={(e) => e.key === 'Enter' && addBoard()}
-            placeholder="예: 심부름"
-            className="w-full rounded-xl border border-acorn-300 bg-white px-3 py-2 text-sm outline-none ring-acorn-300 focus:ring-2"
-          />
-          <button onClick={addBoard} className="rounded-xl bg-leaf-500 px-3 py-2 text-sm font-bold text-white">
-            등록
-          </button>
-        </div>
-
+        <h2 className="text-sm font-bold">도장 종류</h2>
         <div className="mt-3 flex flex-wrap gap-2">
           {state.boards.map((board) => (
             <button
