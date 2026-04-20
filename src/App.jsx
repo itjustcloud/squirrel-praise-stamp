@@ -164,8 +164,7 @@ export default function App() {
     <div className="mx-auto min-h-screen w-full max-w-md px-4 pb-10 pt-6 text-acorn-900">
       <header className="rounded-3xl border border-acorn-200 bg-white/70 p-4 shadow-sm backdrop-blur">
         <p className="text-xs font-semibold uppercase tracking-[0.18em] text-leaf-700">Squirrel Praise Stamp</p>
-        <h1 className="mt-1 text-2xl font-black">다람쥐 칭찬도장</h1>
-        <p className="mt-1 text-sm text-acorn-700">사용자: {state.userName}</p>
+        <h1 className="mt-1 text-2xl font-black">🐿️ 다람쥐 칭찬도장</h1>
       </header>
 
       <section className="mt-4 rounded-2xl border border-acorn-200 bg-white/80 p-4">
