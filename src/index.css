@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', sans-serif;
+  color: #3a2515;
+  background: linear-gradient(180deg, #fff8ee 0%, #ffefdb 45%, #fbe8cb 100%);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.stamp-cell {
+  background:
+    radial-gradient(circle at 26% 30%, rgba(255, 255, 255, 0.38), transparent 40%),
+    linear-gradient(145deg, #ffe8c4 0%, #f8c687 100%);
+}
